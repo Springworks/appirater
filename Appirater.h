@@ -59,13 +59,12 @@ extern NSString *const kAppiraterReminderRequestDate;
  This is the message your users will see once they've passed the day+launches
  threshold.
  */
-#define APPIRATER_LOCALIZED_MESSAGE     NSLocalizedStringFromTable(@"If you enjoy using %@, would you mind taking a moment to rate it? It won't take more than a minute. Thanks for your support!", @"AppiraterLocalizable", nil)
-#define APPIRATER_MESSAGE				[NSString stringWithFormat:APPIRATER_LOCALIZED_MESSAGE, APPIRATER_APP_NAME]
+#define APPIRATER_MESSAGE				NSLocalizedStringFromTable(@"Rating takes less than a minute.", @"appirater", @"Appirater alert message.")
 
 /*
  This is the title of the message alert that users will see.
  */
-#define APPIRATER_LOCALIZED_MESSAGE_TITLE   NSLocalizedStringFromTable(@"Rate %@", @"AppiraterLocalizable", nil)
+#define APPIRATER_LOCALIZED_MESSAGE_TITLE   NSLocalizedStringFromTable(@"Help make %@ even more awesome. Rate us 5 stars!", @"appirater", @"Appirater alert title.")
 #define APPIRATER_MESSAGE_TITLE             [NSString stringWithFormat:APPIRATER_LOCALIZED_MESSAGE_TITLE, APPIRATER_APP_NAME]
 
 /*
@@ -76,8 +75,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  Text of button that will send user to app review page.
  */
-#define APPIRATER_LOCALIZED_RATE_BUTTON NSLocalizedStringFromTable(@"Rate %@", @"AppiraterLocalizable", nil)
-#define APPIRATER_RATE_BUTTON			[NSString stringWithFormat:APPIRATER_LOCALIZED_RATE_BUTTON, APPIRATER_APP_NAME]
+#define APPIRATER_RATE_BUTTON			NSLocalizedStringFromTable(@"Rate 5 Stars", @"appirater", nil)
 
 /*
  Text for button to remind the user to review later.
@@ -212,6 +210,11 @@ extern NSString *const kAppiraterReminderRequestDate;
  Set the delegate if you want to know when Appirater does something
  */
 + (void)setDelegate:(id<AppiraterDelegate>)delegate;
+
+/*
+ 'YES' will hide the "Remind later" button in the alert.
+ */
++ (void)setDisallowReminder:(BOOL)disallowReminder;
 
 @end
 

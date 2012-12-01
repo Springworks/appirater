@@ -55,6 +55,7 @@ static NSInteger _significantEventsUntilPrompt = -1;
 static double _timeBeforeReminding = 1;
 static BOOL _debug = NO;
 static id<AppiraterDelegate> _delegate;
+static BOOL _disallowReminder = NO;
 
 @interface Appirater ()
 - (BOOL)connectedToNetwork;
@@ -94,6 +95,10 @@ static id<AppiraterDelegate> _delegate;
 }
 + (void)setDelegate:(id<AppiraterDelegate>)delegate{
 	_delegate = delegate;
+}
+
++ (void)setDisallowReminder:(BOOL)disallowReminder {
+    _disallowReminder = disallowReminder;
 }
 
 - (BOOL)connectedToNetwork {
@@ -144,11 +149,23 @@ static id<AppiraterDelegate> _delegate;
 }
 
 - (void)showRatingAlert {
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:APPIRATER_MESSAGE_TITLE
-														 message:APPIRATER_MESSAGE
-														delegate:self
-											   cancelButtonTitle:APPIRATER_CANCEL_BUTTON
-											   otherButtonTitles:APPIRATER_RATE_BUTTON, APPIRATER_RATE_LATER, nil];
+	UIAlertView *alertView = nil;
+    
+    if (_disallowReminder) {
+        alertView = [[UIAlertView alloc] initWithTitle:APPIRATER_MESSAGE_TITLE
+                                               message:APPIRATER_MESSAGE
+                                              delegate:self
+                                     cancelButtonTitle:APPIRATER_CANCEL_BUTTON
+                                     otherButtonTitles:APPIRATER_RATE_BUTTON, nil];
+    }
+    else {
+        alertView = [[UIAlertView alloc] initWithTitle:APPIRATER_MESSAGE_TITLE
+                                               message:APPIRATER_MESSAGE
+                                              delegate:self
+                                     cancelButtonTitle:APPIRATER_CANCEL_BUTTON
+                                     otherButtonTitles:APPIRATER_RATE_BUTTON, APPIRATER_RATE_LATER, nil];
+    }
+    
 	self.ratingAlert = alertView;
 	[alertView show];
 	
