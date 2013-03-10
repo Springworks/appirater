@@ -70,7 +70,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  The text of the button that rejects reviewing the app.
  */
-#define APPIRATER_CANCEL_BUTTON			NSLocalizedStringFromTable(@"No, Thanks", @"AppiraterLocalizable", nil)
+#define APPIRATER_CANCEL_BUTTON			NSLocalizedStringFromTable(@"No, Thanks", @"appirater", nil)
 
 /*
  Text of button that will send user to app review page.
@@ -80,7 +80,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  Text for button to remind the user to review later.
  */
-#define APPIRATER_RATE_LATER			NSLocalizedStringFromTable(@"Remind me later", @"AppiraterLocalizable", nil)
+#define APPIRATER_RATE_LATER			NSLocalizedStringFromTable(@"Remind me later", @"appirater", nil)
 
 @interface Appirater : NSObject <UIAlertViewDelegate> {
 
