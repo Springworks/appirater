@@ -64,7 +64,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  This is the title of the message alert that users will see.
  */
-#define APPIRATER_LOCALIZED_MESSAGE_TITLE   NSLocalizedStringFromTable(@"Help make %@ even more awesome. Rate us 5 stars!", @"appirater", @"Appirater alert title.")
+#define APPIRATER_LOCALIZED_MESSAGE_TITLE   NSLocalizedStringFromTable(@"Help make %@\n even more awesome.\nRate us 5 stars!", @"appirater", @"Appirater alert title.")
 #define APPIRATER_MESSAGE_TITLE             [NSString stringWithFormat:APPIRATER_LOCALIZED_MESSAGE_TITLE, APPIRATER_APP_NAME]
 
 /*
